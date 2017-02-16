@@ -1,11 +1,12 @@
 <template>
   <div class="Question">
-    <button @click="back">BACK</button>
     <h1>Question # {{ currentQuestion }}</h1>
     <h2 class="q">{{ question.question }}</h2>
     <ul class="choices">
-      <li>{{ question.answers }}</li>
+      <li @click="storeChoice(answer)" v-for="answer in question.answers">{{ answer }}</li>
     </ul>
+    <button v-show="index!==0" @click="back" id="backButton">Previous Question</button>
+    <button v-show="index===0" id="fakeBackButton">Previous Question</button>
   </div>
 </template>
 
@@ -13,18 +14,27 @@
 
 export default {
   props: [
-    'question'
+    'question',
+    'index'
   ],
+
+  mounted () {
+    console.log('Question -> ' + this.index)
+  },
 
   data () {
     return {
-      currentQuestion: 1
+      currentQuestion: this.index + 1
     }
   },
 
   methods: {
     back () {
       this.$emit('backClicked')
+    },
+
+    storeChoice (a) {
+      this.$emit('answerStored', a)
     }
   }
 }
@@ -32,8 +42,75 @@ export default {
 
 <style>
 
+.Question {
+  /*border: 5px solid red;*/
+  width: 60vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 h1, h2, ul{
   color: black
+}
+
+.choices {
+  /*border: 5px solid red;*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.choices li{
+  /*border: 2px solid blue;*/
+  list-style: none;
+  text-align: center;
+  background-color: rgba(15, 82, 186, .6);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 30px;
+  width: 150px;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  padding: 10px;
+  flex: 1;
+}
+
+#backButton {
+  width: 15vw;
+  margin-top: 20px;
+  height: 10vh;
+  padding: 20px;
+  background-color: rgba(35, 185, 160, .9);
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  align-content: center;
+  font-size: 3vmin;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#fakeBackButton {
+  width: 15vw;
+  height: 10vh;
+  margin-top: 20px;
+  background-color: rgba(35, 185, 160, .4);
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  align-content: center;
+  font-size: 3vmin;
+  padding: 5px;
 }
 
 </style>

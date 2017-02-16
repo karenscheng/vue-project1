@@ -2,9 +2,10 @@
   <div id="app">
     <div id="panel">
         <Hello @buttonClicked="handleClick" v-show="!questionTime"></Hello>
-      <transition name="slide">
-        <Question @backClicked="goBack" v-show="questionTime" v-for="question in questions" :question="question"></Question>
-      <transition>
+      <!-- <transition-group name="slide"> -->
+        <Question @backClicked="goBack" @answerStored="nextQuestion" v-show="questionTime" v-if="currentQuestion === question" v-for="(question, index) in questions" :question="question" :index="index"></Question>
+      <!-- <transition-group> -->
+        <Result v-show="showResult"></Result>
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@
 import axios from 'axios'
 import Hello from './components/Hello'
 import Question from './components/Question'
+import Result from './components/Result'
 
 export default {
   name: 'app',
@@ -20,7 +22,12 @@ export default {
   data () {
     return {
       questionTime: false,
-      questions: []
+      questions: [],
+      currentQuestion: null,
+      questionIndex: 0,
+      showResult: false,
+      responses: [],
+      resultKeys: []
     }
   },
 
@@ -35,17 +42,50 @@ export default {
 
   components: {
     Hello,
-    Question
+    Question,
+    Result
   },
 
   methods: {
     handleClick () {
       console.log('App -> button clicked.')
       this.questionTime = true
+      this.currentQuestion = this.questions[this.questionIndex]
     },
 
     goBack () {
-      this.questionTime = false
+      this.questionIndex--
+      console.log('App -> questionIndex: ' + this.questionIndex)
+      this.responses.splice(this.questionIndex, 1)
+      this.resultKeys.splice(this.questionIndex, 1)
+      this.currentQuestion = this.questions[this.questionIndex]
+    },
+
+    nextQuestion (a) {
+      console.log('App -> nextQuestionClicked')
+      this.responses.push(a)
+      this.resultKeys.push(a.charAt(0))
+      this.questionIndex++
+      if (this.questionIndex === 9) {
+        this.showResult = true
+        this.calculateResult()
+      }
+      this.currentQuestion = this.questions[this.questionIndex]
+    },
+
+    calculateResult () {
+      console.log('App -> calculateResult: resultKeys = ' + this.resultKeys)
+      const result = this.resultKeys.join('')
+      console.log(result)
+      // const q1 = this.responses[0]
+      // const q2 = this.responses[1]
+      // const q3 = this.responses[2]
+      // const q4 = this.responses[3]
+      // const q5 = this.responses[4]
+      // const q6 = this.responses[5]
+      // const q7 = this.responses[6]
+      // const q8 = this.responses[7]
+      // const q9 = this.responses[8]
     }
   }
 }
