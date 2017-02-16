@@ -1,0 +1,68 @@
+[
+  {
+    "question": "I typically gravitate towards drama",
+    "answers": [
+      "True",
+      "False"
+    ]
+  },
+  {
+    "question": "I identify as an...",
+    "answers": [
+      "Introvert",
+      "Extrovert",
+      "Somewhere in the middle"
+    ]
+  },
+  {
+    "question": "I've been told I'm an old soul",
+    "answers": [
+      "True",
+      "False"
+    ]
+  },
+  {
+    "question": "It takes a long time for me to get close to someone",
+    "answers": [
+      "True",
+      "False"
+    ]
+  },
+  {
+    "question": "I tend to act immediately rather than speculate about various options",
+    "answers": [
+      "True",
+      "Sometimes True",
+      "False"
+    ]
+  },
+  {
+    "question": "I often ponder the root cause of phenomena and things",
+    "answers": [
+      "True",
+      "Sometimes True",
+      "False"
+    ]
+  },
+  {
+    "question": "I am a person somewhat reserved and distant in communication",
+    "answers": [
+      "True",
+      "False"
+    ]
+  },
+  {
+    "question": "I tend to sympathize with other people",
+    "answers": [
+      "True",
+      "False"
+    ]
+  },
+  {
+    "question": "I tend to have:",
+    "answers": [
+      "Few close friends",
+      "Many acquaintances"
+    ]
+  }
+]
