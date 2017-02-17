@@ -22,3 +22,5 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 # vue-project1
 
 This simple personality quiz features easy-to-follow navigation and was built with Vue.js.
+
+![tag](https://github.com/karenscheng/vue-project1/blob/master/Screen%20Shot%202017-02-17%20at%204.50.35%20PM.png)
