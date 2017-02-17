@@ -1,4 +1,4 @@
-# Which Galazy Are You?
+# Which Galaxy Are You?
 
 > MEJO 583 project 1 - Vue.js app
 
