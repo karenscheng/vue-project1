@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <div id="panel">
-      <transition name="slide">
+      <!-- #failing at getting these dumb transitions to work  -->
+      <!-- <transition name="slide"> -->
         <Hello @buttonClicked="handleClick" v-show="!questionTime"></Hello>
-      </transition>
+      <!-- </transition> -->
       <!-- <transition-group name="slide"> -->
         <Question @backClicked="goBack" @answerStored="nextQuestion" v-show="questionTime" v-if="currentQuestion === question" v-for="(question, index) in questions" v-bind:key="index" :question="question" :index="index"></Question>
       <!-- <transition-group> -->

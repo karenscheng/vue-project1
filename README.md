@@ -1,6 +1,6 @@
 # project1
 
-> MEJO 583 project1
+> MEJO 583 project 1 - Vue.js app
 
 ## Build Setup
 
@@ -20,3 +20,5 @@ npm run build --report
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 # vue-project1
+
+This simple personality quiz features easy-to-follow navigation and was built with Vue.js.
