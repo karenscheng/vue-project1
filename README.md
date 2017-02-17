@@ -1,4 +1,4 @@
-# project1
+# Which Galazy Are You?
 
 > MEJO 583 project 1 - Vue.js app
 
