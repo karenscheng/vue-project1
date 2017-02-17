@@ -53,14 +53,23 @@ export default {
   justify-content: center;
 }
 
-h1, h2, ul{
+h1, h2, ul {
   color: black
+}
+
+h1 {
+  font-size: 6vmin
+}
+
+h2 {
+  font-size: 4vmin
 }
 
 .choices {
   /*border: 5px solid red;*/
   display: flex;
   justify-content: space-between;
+  /*flex-wrap: wrap;*/
 }
 
 .choices li{
@@ -71,8 +80,7 @@ h1, h2, ul{
   color: white;
   font-size: 20px;
   font-weight: bold;
-  margin-right: 30px;
-  width: 150px;
+  margin: 10px;
   text-decoration: none;
   cursor: pointer;
   display: flex;
@@ -115,7 +123,13 @@ h1, h2, ul{
   padding: 5px;
 }
 
-.slide-fade-enter-active {
+/*@media only screen and (max-width: 400px) {
+  h1{
+    font-size: 10vh;
+  }
+}*/
+
+/*.slide-fade-enter-active {
   transition: all .3s ease;
 }
 .slide-fade-leave-active {
@@ -126,6 +140,6 @@ h1, h2, ul{
   transform: translateX(10px);
   opacity: 0;
   position: absolute;
-}
+}*/
 
 </style>

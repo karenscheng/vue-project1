@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    <h1>WHICH GALAXY ARE YOU?</h1>
+    <div class="hero">
+      <h1 contenteditable>WHICH GALAXY ARE YOU?</h1>
+    </div>
     <button @click="loadQuestion"><span>TAKE THE QUIZ</span></button>
   </div>
 </template>
@@ -8,6 +10,32 @@
 <script>
 
 export default {
+
+  mounted () {
+    const hero = document.querySelector('.hero')
+    const text = hero.querySelector('h1')
+    const walk = 30 // 100px
+
+    function shadow (e) {
+      const width = hero.offsetWidth
+      // const height = hero.offsetHeight
+      let { offsetX: x, offsetY: y } = e
+
+      if (this !== e.target) {
+        x = x + e.target.offsetLeft
+        y = y + e.target.offsetTop
+      }
+
+      const xwalk = (x / width * walk) - (walk / 2)
+      const ywalk = (y / width * walk) - (walk / 2)
+
+      text.style.textShadow = `
+        ${xwalk}px ${ywalk}px 0 rgba(255,0,255,0.7)
+      `
+    }
+
+    hero.addEventListener('mousemove', shadow)
+  },
 
   methods: {
     loadQuestion () {
@@ -35,6 +63,7 @@ export default {
     font-size: 16vmin;
     text-align: center;
     font-weight: bold;
+    text-shadow: 5px 5px 0 rgba(255,0,255,0.7);
   }
 
   button{

@@ -1,8 +1,8 @@
 {
   "name": "project1",
   "version": "1.0.0",
-  "description": "MEJO 583 project1",
-  "author": "karenscheng",
+  "description": "MEJO 583 Project 1: Vue.js app",
+  "author": "github.com/karenscheng",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

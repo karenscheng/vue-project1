@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <div id="panel">
+      <transition name="slide">
         <Hello @buttonClicked="handleClick" v-show="!questionTime"></Hello>
+      </transition>
       <!-- <transition-group name="slide"> -->
-        <Question @backClicked="goBack" @answerStored="nextQuestion" v-show="questionTime" v-if="currentQuestion === question" v-for="(question, index) in questions" :question="question" :index="index" v-bind:key="index"></Question>
+        <Question @backClicked="goBack" @answerStored="nextQuestion" v-show="questionTime" v-if="currentQuestion === question" v-for="(question, index) in questions" v-bind:key="index" :question="question" :index="index"></Question>
       <!-- <transition-group> -->
         <Result v-show="showResult" :picture="this.picture" :address="this.address" :description="this.description"></Result>
     </div>
@@ -66,7 +68,7 @@ export default {
     nextQuestion (a) {  // triggers when an answer choice is clicked
       console.log('App -> nextQuestionClicked')
       this.responses.push(a)
-      this.resultKeys.push(a.charAt(0))
+      this.resultKeys.push(a.charAt(0)) // resultKeys stores the first letter of each answer choice
       this.questionIndex++
       if (this.questionIndex === 9) { // shows Result component after question 9
         this.calculateResult()
@@ -77,34 +79,44 @@ export default {
 
     calculateResult () {  // complicated algo for figuring out which galaxy you are
       console.log('App -> calculateResult: resultKeys = ' + this.resultKeys)
-      let result = this.resultKeys.join('')
+      let result = this.resultKeys.join('') // makes resultKeys into a single string
 
       // here I am checking to give certain answers a galaxy type
       if (this.resultKeys[1] === 'I' && this.resultKeys[2] === 'T' &&
         this.resultKeys[3] === 'T' && this.resultKeys[6] === 'T' &&
         this.resultKeys[8] === 'F') {
         result = 'mysterious'
-      }
-      if (this.resultKeys[0] === 'T' && this.resultKeys[1] === 'E' &&
+      } else if (this.resultKeys[0] === 'F' && this.resultKeys[1] === 'I' &&
+        this.resultKeys[2] === 'T' && this.resultKeys[4] === 'T' &&
+        this.resultKeys[5] === 'T') {
+        result = 'backwards-spiral'
+      } else if (this.resultKeys[2] === 'T' && this.resultKeys[3] === 'T' &&
+        this.resultKeys[5] === 'T' && this.resultKeys[6] === 'T' &&
+        this.resultKeys[7] === 'T') {
+        result = 'wise'
+      } else if (this.resultKeys[0] === 'T' && this.resultKeys[1] === 'E' &&
         this.resultKeys[4] === 'T' && this.resultKeys[8] === 'M') {
         result = 'sombrero'
-      } else if ((this.resultKeys[1] === 'E' && this.resultKeys[4] === 'S') ||
-      (this.resultKeys[1] === 'E' && this.resultKeys[5] === 'S') ||
-      (this.resultKeys[5] === 'S' && this.resultKeys[6] === 'S')) {
+      } else if (this.resultKeys[1] === 'I' && this.resultKeys[3] === 'T' &&
+        this.resultKeys[4] === 'T') {
+        result = 'ngc3079'
+      } else if ((this.resultKeys[1] === 'S' && this.resultKeys[4] === 'S') ||
+      (this.resultKeys[1] === 'S' && this.resultKeys[5] === 'S') ||
+      (this.resultKeys[4] === 'S' && this.resultKeys[5] === 'S')) {
         result = 'normal'
       }
       console.log(this.result)
 
-      /*
-      1: T/F        Drama
-      2: I/E/S      Introvert/Extrovert
-      3: T/F        Old soul
-      4: T/F        Distant
-      5: T/S/F      Spontaneous
-      6: T/S/F      Reflective
-      7: T/F        Reserved
-      8: T/F        Sympathetic
-      9: F/M        Few friends/Many acquaintances
+      /* answers    Questions                         resultKeys index
+      1: T/F        Drama                             resultKeys[0]
+      2: I/E/S      Introvert/Extrovert               resultKeys[1]
+      3: T/F        Old soul                          resultKeys[2]
+      4: T/F        Distant                           resultKeys[3]
+      5: T/S/F      Spontaneous                       resultKeys[4]
+      6: T/S/F      Reflective                        resultKeys[5]
+      7: T/F        Reserved                          resultKeys[6]
+      8: T/F        Sympathetic                       resultKeys[7]
+      9: F/M        Few friends/Many acquaintances    resultKeys[8]
       */
 
       switch (result) { // sets image
@@ -116,6 +128,15 @@ export default {
           break
         case 'mysterious':
           this.picture = 'Circinus'
+          break
+        case 'backwards-spiral':
+          this.picture = 'Backwards Spiral'
+          break
+        case 'wise':
+          this.picture = 'M81'
+          break
+        case 'ngc3079':
+          this.picture = 'NGC3079'
           break
         default:
           this.picture = 'Small Magellanic Cloud'
@@ -140,8 +161,17 @@ export default {
         case 'Circinus':
           this.description = 'The Circinus Galaxy is one of the nearest galaxies, but widely unexplored because the Milky Way veils it. Similar to you, its mysterious nature is quite curious.'
           break
+        case 'Backwards Spiral':
+          this.description = 'The Backwards Sprial Galaxy is quite puzzling to Astronomers, because it is a rare example of a sprial galaxy with arms pointing in opposite directions. Similar to you, it is quirky and hard to categorize.'
+          break
+        case 'M81':
+          this.description = 'The M81 Galaxy is found in the northern constellation of Ursa Major, and is 12 million light years away. It hints at a disorderly past, with a remarkable dust lane running straight through the disk. It is similar to you in that you have had many experiences in the past that have shaped you into the wise person you are today.'
+          break
+        case 'NGC3079':
+          this.description = 'The NGC3079 Galaxy is mysterious, and contains a bubble which was formed from winds of hot stars mixing with small bubbles of hot gas from supernova explosions. Spontaneous and full of surprises like you, but still keeps it distance  at 50 million light years away.'
+          break
         case 'Small Magellanic Cloud':
-          this.description = 'welp. here is the default option.'
+          this.description = 'This is a great galaxy and you should be proud.'
           break
       }
     }
