@@ -1,13 +1,15 @@
 <template>
-  <div class="Question">
-    <h1>Question # {{ currentQuestion }}</h1>
-    <h2 class="q">{{ question.question }}</h2>
-    <ul class="choices">
-      <li @click="storeChoice(answer)" v-for="answer in question.answers">{{ answer }}</li>
-    </ul>
-    <button v-show="index!==0" @click="back" id="backButton">Previous Question</button>
-    <button v-show="index===0" id="fakeBackButton">Previous Question</button>
-  </div>
+  <!-- <transition name="slide"> -->
+    <div class="Question">
+      <h1>Question # {{ currentQuestion }}</h1>
+      <h2 class="q">{{ question.question }}</h2>
+      <ul class="choices">
+        <li @click="storeChoice(answer)" v-for="answer in question.answers">{{ answer }}</li>
+      </ul>
+      <button v-show="index!==0" @click="back" id="backButton">Previous Question</button>
+      <button v-show="index===0" id="fakeBackButton">Previous Question</button>
+    </div>
+  <!-- </transition> -->
 </template>
 
 <script>
@@ -111,6 +113,19 @@ h1, h2, ul{
   align-content: center;
   font-size: 3vmin;
   padding: 5px;
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  position: absolute;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+  position: absolute;
 }
 
 </style>

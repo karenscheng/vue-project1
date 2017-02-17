@@ -9,11 +9,6 @@
 
 export default {
 
-  data () {
-    return {
-    }
-  },
-
   methods: {
     loadQuestion () {
       this.$emit('buttonClicked')
