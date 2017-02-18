@@ -96,11 +96,26 @@ export default {
         this.resultKeys[7] === 'T') {
         result = 'wise'
       } else if (this.resultKeys[0] === 'T' && this.resultKeys[1] === 'E' &&
+        this.resultKeys[3] === 'F' && this.resultKeys[4] === 'T' &&
+        this.resultKeys[8] === 'F') {
+        result = 'centarusA'
+      } else if (this.resultKeys[0] === 'T' && this.resultKeys[1] === 'E' &&
         this.resultKeys[4] === 'T' && this.resultKeys[8] === 'M') {
         result = 'sombrero'
+      } else if (this.resultKeys[0] === 'T' && this.resultKeys[1] === 'E' &&
+        this.resultKeys[5] === 'T' && this.resultKeys[6] === 'F' &&
+        this.resultKeys[8] === 'M') {
+        result = 'starburst'
       } else if (this.resultKeys[1] === 'I' && this.resultKeys[3] === 'T' &&
         this.resultKeys[4] === 'T') {
         result = 'ngc3079'
+      } else if (this.resultKeys[0] === 'T' && this.resultKeys[4] === 'T' &&
+        this.resultKeys[8] === 'F') {
+        result = 'ngc1097'
+      } else if (this.resultKeys[0] === 'T' && this.resultKeys[1] === 'E') {
+        result = 'm100'
+      } else if (this.resultKeys[0] === 'T' && this.resultKeys[7] === 'F') {
+        result = 'pinwheel'
       } else if ((this.resultKeys[1] === 'S' && this.resultKeys[4] === 'S') ||
       (this.resultKeys[1] === 'S' && this.resultKeys[5] === 'S') ||
       (this.resultKeys[4] === 'S' && this.resultKeys[5] === 'S')) {
@@ -109,15 +124,15 @@ export default {
       console.log(this.result)
 
       /* answers    Questions                         resultKeys index
-      1: T/F        Drama                             resultKeys[0]
-      2: I/E/S      Introvert/Extrovert               resultKeys[1]
-      3: T/F        Old soul                          resultKeys[2]
-      4: T/F        Distant                           resultKeys[3]
-      5: T/S/F      Spontaneous                       resultKeys[4]
-      6: T/S/F      Reflective                        resultKeys[5]
-      7: T/F        Reserved                          resultKeys[6]
-      8: T/F        Sympathetic                       resultKeys[7]
-      9: F/M        Few friends/Many acquaintances    resultKeys[8]
+      0: T/F        Drama                             resultKeys[0]
+      1: I/E/S      Introvert/Extrovert               resultKeys[1]
+      2: T/F        Old soul                          resultKeys[2]
+      3: T/F        Distant                           resultKeys[3]
+      4: T/S/F      Spontaneous                       resultKeys[4]
+      5: T/S/F      Reflective                        resultKeys[5]
+      6: T/F        Reserved                          resultKeys[6]
+      7: T/F        Sympathetic                       resultKeys[7]
+      8: F/M        Few friends/Many acquaintances    resultKeys[8]
       */
 
       switch (result) { // sets image
@@ -136,11 +151,26 @@ export default {
         case 'wise':
           this.picture = 'M81'
           break
+        case 'centarusA':
+          this.picture = 'Centarus A'
+          break
+        case 'starburst':
+          this.picture = 'Starburst'
+          break
         case 'ngc3079':
           this.picture = 'NGC3079'
           break
+        case 'ngc1097':
+          this.picture = 'NGC1097'
+          break
+        case 'pinwheel':
+          this.picture = 'Pinwheel'
+          break
+        case 'm100':
+          this.picture = 'M100'
+          break
         default:
-          this.picture = 'Small Magellanic Cloud'
+          this.picture = 'Whirlpool'
           break
       }
       this.setText(this.picture) // calls setText to set description
@@ -165,14 +195,29 @@ export default {
         case 'Backwards Spiral':
           this.description = 'The Backwards Sprial Galaxy is quite puzzling to Astronomers, because it is a rare example of a sprial galaxy with arms pointing in opposite directions. Similar to you, it is quirky and hard to categorize.'
           break
+        case 'Centarus A':
+          this.description = 'The Centarus A is the 5th brightest galaxy in our sky, and is famous for its prominent dust lane across the middle with a giant jet blasting away from the supermassive black hole at the center. Like you, it garners a lot of attention, and people naturally gravitate towards you.'
+          break
+        case 'Starburst':
+          this.description = 'The Starburst is 12 million light years away, and is the nearest place to us where the conditions are similar to those in the early universe, with lots of stars forming. It is vibrant and interesting, just like you!'
+          break
         case 'M81':
           this.description = 'The M81 Galaxy is found in the northern constellation of Ursa Major, and is 12 million light years away. It hints at a disorderly past, with a remarkable dust lane running straight through the disk. It is similar to you in that you have had many experiences in the past that have shaped you into the wise person you are today.'
           break
         case 'NGC3079':
           this.description = 'The NGC3079 Galaxy is mysterious, and contains a bubble which was formed from winds of hot stars mixing with small bubbles of hot gas from supernova explosions. Spontaneous and full of surprises like you, but still keeps it distance  at 50 million light years away.'
           break
-        case 'Small Magellanic Cloud':
-          this.description = 'This is a great galaxy and you should be proud.'
+        case 'NGC1097':
+          this.description = 'The NGC1097 Galaxy, like you, is incredibly interesting - in an 11 year span it had 3 supernovas (violent deaths of high-mass stars), and is 45 million light years away. You have a couple true friends that you always have by your side. NCG1097 also has two satellite galaxies that travel along with it #BFFS'
+          break
+        case 'Pinwheel':
+          this.description = 'The M101 Galaxy, also known as the Pinwheel Galaxy, is 70% larger than our Milky Way and is 21 million light years away from Earth. It is so large that it distorts the smaller nearby galaxies, which is similar to you in that you sometimes have a hard time relating to others.'
+          break
+        case 'M100':
+          this.description = 'The M100 Galaxy has conditions similar to the Milky Way, with over 100 billion stars. It is a large spiral galaxy, and astronomers have deemed it to be of grand design. It is majestic like you, but also can be extremely hot or cold depending on the spot.'
+          break
+        case 'Whirlpool':
+          this.description = 'The M51 Galaxy, also known as the Whirlpool Galaxy, is 30 million light years away and is approximately 60,000 light years across. It\'s one of the brightest and most picturesque galaxies, and is in the process of merging with a smaller galaxy. It\'s kind of a wildcard, just like you.'
           break
       }
     }

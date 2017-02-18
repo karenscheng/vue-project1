@@ -30,7 +30,7 @@ export default {
       const ywalk = (y / width * walk) - (walk / 2)
 
       text.style.textShadow = `
-        ${xwalk}px ${ywalk}px 0 rgba(255,0,255,0.7)
+        ${xwalk}px ${ywalk}px 0 rgba(255,0,255,0.8)
       `
     }
 
@@ -63,7 +63,7 @@ export default {
     font-size: 16vmin;
     text-align: center;
     font-weight: bold;
-    text-shadow: 5px 5px 0 rgba(255,0,255,0.7);
+    text-shadow: 5px 5px 0 rgba(255,0,255,0.8);
   }
 
   button{
