@@ -29,6 +29,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/vue-project1': {
+        target: 'http://localhost:8080/',
+        changeOrigin: true,
         pathRewrite: {
           '^/vue-project1': ''
         }
