@@ -57,7 +57,7 @@ export default {
 
   h1{
     /*border: 5px solid red;*/
-    background: url("../../static/images/cluster.jpg") no-repeat;
+    background: url("/vue-project1/static/images/cluster.jpg") no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 16vmin;

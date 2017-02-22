@@ -39,7 +39,7 @@ export default {
 
   mounted () {
     console.log('App -> mounted.')
-    axios.get('../../static/quiz.json')
+    axios.get('/vue-project1/static/quiz.json')
       .then((response) => {
         this.questions = response.data
       })
@@ -174,7 +174,7 @@ export default {
           break
       }
       this.setText(this.picture) // calls setText to set description
-      this.address = '/static/images/' + this.picture + '.jpg'
+      this.address = '/vue-project1/static/images/' + this.picture + '.jpg'
       console.log('App -> ' + this.picture)
     },
 
@@ -231,7 +231,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(255, 255, 255);
-  background-image: url("../static/images/cluster.jpg");
+  background-image: url("/vue-project1/static/images/cluster.jpg");
   display: flex;
   /*border: 5px solid red;*/
   justify-content: center;

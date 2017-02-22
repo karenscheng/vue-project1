@@ -18,7 +18,7 @@ export default {
 
   data () {
     return {
-      spaceImage: '/static/images/' + this.picture + '.jpg'
+      spaceImage: '/vue-project1/static/images/' + this.picture + '.jpg'
     }
   }
 }
