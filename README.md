@@ -22,3 +22,13 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 # vue-project1
 
 This simple personality quiz features easy-to-follow navigation and was built with Vue.js.
+
+![alt tag](https://github.com/karenscheng/vue-project1/blob/master/Screen%20Shot%202017-02-17%20at%204.39.23%20PM.png)
+
+Navigate through the quiz by selecting answer choices, you may go back to previous questions by clicking the "Previous Question" button. 
+
+![alt tag](https://github.com/karenscheng/vue-project1/blob/master/Screen%20Shot%202017-02-17%20at%204.50.35%20PM.png)
+
+You can find out if you're boring or not.
+
+![alt tag](https://github.com/karenscheng/vue-project1/blob/master/Screen%20Shot%202017-02-17%20at%204.40.02%20PM.png)
